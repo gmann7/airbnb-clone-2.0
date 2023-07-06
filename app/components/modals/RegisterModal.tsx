@@ -17,11 +17,13 @@ const RegisterModal = () => {
     const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false);
 
-    const { register, handleSubmit, formState: { errors, }} = useForm<FieldValues>({ 
-        defaultValues: { 
-            name: '', 
-            email: '', 
-            password: ''}});
+    const { register, handleSubmit, formState: { errors, } } = useForm<FieldValues>({
+        defaultValues: {
+            name: '',
+            email: '',
+            password: ''
+        }
+    });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
@@ -34,26 +36,26 @@ const RegisterModal = () => {
 
     const bodyContent = (
         <div className='flex flex-col gap-4'>
-            <Heading 
+            <Heading
                 title='Welcome to Airbnb'
                 subtitle='Create an account!'
                 center={true}
-             />
-             <Input 
+            />
+            <Input
                 id="name"
                 label="Name"
                 disabled={isLoading}
                 register={register}
                 errors={errors}
                 required />
-            <Input 
+            <Input
                 id="email"
                 label="Email"
                 disabled={isLoading}
                 register={register}
                 errors={errors}
                 required />
-            <Input 
+            <Input
                 id="password"
                 type='password'
                 label="Password"
@@ -71,13 +73,13 @@ const RegisterModal = () => {
                 outline
                 label='Continue with Google'
                 icon={FcGoogle}
-                onClick={() => {}}
+                onClick={() => { }}
             />
             <Button
                 outline
                 label='Continue with Github'
                 icon={AiFillGithub}
-                onClick={() => {}}
+                onClick={() => { }}
             />
             <div className='
                 text-neutral-500
@@ -90,8 +92,8 @@ const RegisterModal = () => {
                         Already have an account?
                     </div>
                     <div
-                        onClick={registerModal.onClose} 
-                        className="text-neutral-800 cursor-pointer hover:underline" > 
+                        onClick={registerModal.onClose}
+                        className="text-neutral-800 cursor-pointer hover:underline" >
                         Log in
                     </div>
                 </div>
@@ -101,18 +103,18 @@ const RegisterModal = () => {
         </div>
 
     )
-    return ( 
-        <Modal 
+    return (
+        <Modal
             disabled={isLoading}
-            isOpen= {registerModal.isOpen}
+            isOpen={registerModal.isOpen}
             title="Register"
             actionLabel="Continue"
-            onClose= {registerModal.onClose}
-            onSubmit= {handleSubmit(onSubmit)}
+            onClose={registerModal.onClose}
+            onSubmit={handleSubmit(onSubmit)}
             body={bodyContent}
             footer={footerContent}
         />
     );
 }
- 
+
 export default RegisterModal;
